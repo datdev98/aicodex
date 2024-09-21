@@ -45,6 +45,16 @@ exports.calculate = function(req, res) {
     throw new Error("Unspecified operation");
   }
 
+  // Convert 2D array to 1D array
+  var arr1 = [[1, 2], [3, 4]];
+  var arr2 = convert2DArrayTo1DArray(arr1);
+  console.log(arr2);
+
+  // Convert 2D array to 1 string
+  var str = convert2DArrayToString(arr1);
+  console.log(str);
+
+
   var operation = operations[req.query.operation];
   if (!operation) {
     throw new Error("Invalid operation: " + req.query.operation);
@@ -65,3 +75,15 @@ exports.calculate = function(req, res) {
   res.json({ result: operation(req.query.operand1, req.query.operand2) });
 };
 
+/**
+ * Function to convert 2 dimention array to 1 dimention array
+ * Each row of the 1 dimention array will be a concatenation of the row elements of 2 dimention array
+ *
+ * Example:
+ * 2D array: [[1, 2], [3, 4]]
+ * 1D array: ['12', '34']
+ */
+function convert2DArrayTo1DArray(arr) {
+  // TODO: Implement this function
+    return arr.map(row => row.join(''));
+}
