@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Memory Game</h1>
+    <div id="game-board">
+        {% for row in grid %}
+            <div class="row">
+                {% for card in row %}
+                    <div class="card {% if card.is_face_up %}face-up{% endif %}" data-name="{{ card.name }}">
+                        <img src="{{ card.image_url }}" alt="{{ card.name }}" class="card-image">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
